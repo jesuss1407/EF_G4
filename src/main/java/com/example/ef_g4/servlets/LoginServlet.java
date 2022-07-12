@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 
         Empleado usuario = usuariosDao.validarPass(contraseña,codigo);
 
-        if(usuario !=null && !Objects.equals(, "")){
+        if(usuario !=null && !Objects.equals(usuario.getDni(), "")){
             session.setAttribute("usuario",usuario);
             //System.out.println(session.getAttribute("usuario")+"xdsesion");
 
