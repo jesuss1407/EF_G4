@@ -47,29 +47,31 @@ public class LoginServlet extends HttpServlet {
         UsuariosDao usuariosDao = new UsuariosDao();
 
         String dni= request.getParameter("dni");
+        System.out.println(dni);
         String contraseña = request.getParameter("password");
         System.out.println(dni+contraseña);
 
         Empleado usuario = usuariosDao.validarPass(contraseña,dni);
         ArrayList<Empleado> listaEmpleados = usuariosDao.listaEmpleados();
         Empleado usuario2 =new Empleado();
+
        for (Empleado empleado : listaEmpleados){
-           if (empleado.getDni().equals(dni)){
+           if (empleado.getDni()==dni){
+               System.out.println( "Aca " + dni);
                usuario2=empleado;
                break;
-           }else {
-                usuario2 = null;
+           }else{
+               usuario2=null;
            }
+
        }
-
-
         if(usuario2 !=null ){
             session.setAttribute("usuario",usuario2);
             session.setMaxInactiveInterval(5*60);
             session.setAttribute("dni",usuario2.getDni());
 
            ArrayList <Rol> arrayListRol=usuario.getRoles();
-            int rol = arrayListRol.get(1).getIdRol();
+            int rol = arrayListRol.get(0).getIdRol();
             System.out.println(rol);
             System.out.println(arrayListRol.get(0).getIdRol());
             System.out.println(arrayListRol.get(1).getIdRol());

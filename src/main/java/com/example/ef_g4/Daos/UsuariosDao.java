@@ -46,6 +46,7 @@ public class UsuariosDao extends BaseDao{
                     empleado.setNombre(resultSet.getString(2));
                     empleado.setApellido(resultSet.getString(3));
                     empleado.setDni(resultSet.getString(4));
+                    System.out.println(empleado.getDni());
                     empleado.setSalario( resultSet.getBigDecimal(5));
                     empleado.setFechaContrato(resultSet.getString(6));
                     empleado.setNombreUsuario(resultSet.getString(7));
@@ -58,7 +59,6 @@ public class UsuariosDao extends BaseDao{
                     rol.setIdRol(resultSet.getInt(11));
                     Empleado empleado1= new Empleado(rol.getIdRol());
                     rol1.setIdRol(resultSet.getInt(12));
-                    System.out.println(rol1.getIdRol());
                     ArrayList<Rol> rolArrayLis = new ArrayList<Rol>();
                     rolArrayLis.add(rol);
                     rolArrayLis.add(rol1);
