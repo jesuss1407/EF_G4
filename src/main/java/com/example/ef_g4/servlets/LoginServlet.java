@@ -2,8 +2,9 @@ package com.example.ef_g4.servlets;
 
 
 
-import com.example.ef_g4.Beans.BUser;
-import com.example.ef_g4.daos.UsuariosDao;
+import com.example.ef_g4.Beans.Empleado;
+import com.example.ef_g4.Beans.Rol;
+import com.example.ef_g4.Daos.UsuariosDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 @WebServlet(name = "LoguinServlet", value = "/loguin")
@@ -53,9 +55,9 @@ public class LoguinServlet extends HttpServlet {
         String contraseña = request.getParameter("password");
         //System.out.println(codigo+contraseña);
 
-        BUser usuario = usuariosDao.validarPass(contraseña,codigo);
+        Empleado usuario = usuariosDao.validarPass(contraseña,codigo);
 
-        if(usuario !=null && !Objects.equals(usuario.getCodigoPucp(), "")){
+        if(usuario !=null && !Objects.equals(, "")){
             session.setAttribute("usuario",usuario);
             //System.out.println(session.getAttribute("usuario")+"xdsesion");
 
@@ -65,7 +67,7 @@ public class LoguinServlet extends HttpServlet {
             session.setAttribute("usuarioLogueado", usuario);
 
 
-            String rol=usuario.getRol();
+            ArrayList<Rol> rol=usuario.getRoles();
             //System.out.println(usuario.getRol());
             switch (rol){
                 case "admin"->{
