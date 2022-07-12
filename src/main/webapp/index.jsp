@@ -63,7 +63,7 @@
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="codigo">Ingresa tu DNI</label>
-                                        <input required="required" type="number" id="codigo" name="codigo" pattern="^[0-9]*" maxlength="8" minlength="8" class="form-control form-control-lg" />
+                                        <input required="required" type="number" id="codigo" name="dni" pattern="^[0-9]*" maxlength="8" minlength="8" class="form-control form-control-lg" />
 
                                     </div>
 

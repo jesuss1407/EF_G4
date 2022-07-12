@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class UsuariosDao extends BaseDao{
 
-
     public Empleado validarPass(String password, String dni){
         Empleado usuario = null;
 
@@ -62,8 +61,6 @@ public class UsuariosDao extends BaseDao{
                     rolArrayLis.add(rol1);
                     empleado.setJefe(empleado1);
                     empleado.setRoles(rolArrayLis);
-
-
                 }
             }
         } catch (SQLException e) {

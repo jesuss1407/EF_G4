@@ -12,7 +12,6 @@ public abstract class BaseDao {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
         final String user = "root";
         final String pass = "root";
         final String url  = "jdbc:mysql://localhost:3306/movies?serverTimezone=America/Lima";

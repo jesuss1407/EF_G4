@@ -46,17 +46,16 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         UsuariosDao usuariosDao = new UsuariosDao();
 
-
         String dni= request.getParameter("dni");
         String contraseña = request.getParameter("password");
-
+        System.out.println(dni+contraseña);
 
         Empleado usuario = usuariosDao.validarPass(contraseña,dni);
         Empleado usuario2=usuariosDao.añadirEmpleado(usuario);
+        System.out.println(usuario2);
 
         if(usuario2 !=null ){
             session.setAttribute("usuario",usuario2);
-
             session.setMaxInactiveInterval(5*60);
             session.setAttribute("dni",usuario2.getDni());
 
@@ -67,13 +66,13 @@ public class LoginServlet extends HttpServlet {
             //System.out.println(usuario.getRol());
             switch (rol){
                 case 1->{
-                    response.sendRedirect(request.getContextPath()+"/AdminServlet");
+                    System.out.println("aqui");
                 }
                 case 2->{
-                    response.sendRedirect(request.getContextPath()+"/OperadorServlet");
+                    System.out.println("aqui2");
                 }
                 case 3->{
-                    response.sendRedirect(request.getContextPath()+"/inicio?action=registrado");
+                    System.out.println("aqui3");
                 }
             }
 
