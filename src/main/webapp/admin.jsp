@@ -6,6 +6,7 @@
 
 
 <jsp:useBean id="usuario" scope="session" type="com.example.ef_g4.Beans.Empleado" class="com.example.ef_g4.Beans.Empleado"/>
+<jsp:useBean id="valor1" scope="request" type="java.util.ArrayList<com.example.ef_g4.Beans.Empleado>" />
 
 <html>
 <head>
@@ -106,7 +107,7 @@
             <thead>
             <tr>
                 <th>Cantidad de empleados sin jefe</th>
-                <th>FECHA RESERVA</th>
+                <th><%=valor1.%></th>
                 <th></th>
 
 
