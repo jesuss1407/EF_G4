@@ -17,8 +17,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
-@WebServlet(name = "LoguinServlet", value = "/loguin")
-public class LoguinServlet extends HttpServlet {
+@WebServlet(name = "LoginServlet", value = "/loguin")
+public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

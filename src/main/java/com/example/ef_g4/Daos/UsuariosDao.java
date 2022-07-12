@@ -10,14 +10,14 @@ import java.sql.SQLException;
 public class UsuariosDao extends BaseDao{
 
 
-    public Empleado validarPass(String password, String codigoPucp){
+    public Empleado validarPass(String password, String dni){
         Empleado usuario = null;
 
-        String sql = "select * from usuarios where codigo_pucp=? and contraseña=sha2(?,256)";
+        String sql = "select * from empleado where dni=? and dni-salario = ?;";
 
         try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sql);) {
-            pstmt.setString(1,codigoPucp);
+            pstmt.setString(1,dni);
             pstmt.setString(2,password);
             try(ResultSet rs = pstmt.executeQuery()){
                 if(rs.next()){
