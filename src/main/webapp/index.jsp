@@ -35,10 +35,21 @@
             text-decoration: none !important;
         }
         @font-face { font-family: "Akzidenz-Grotesk"; src: url('<%=request.getContextPath()%>/akzidenz.otf'); }
+
+
+
+        body{
+            background: rgb(147, 151, 157);
+            background: linear-gradient(0deg, rgb(183, 185, 189) 0%, rgb(103, 103, 103) 80%);
+            background-repeat: no-repeat ;
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+        }
     </style>
 </head>
-<body >
-<section class="vh-100" style="background-color: #858585;">
+<body  class="d-flex flex-column min-vh-100" >
+<section class="vh-100" style="background-color: #ffffff;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-xl-10">
@@ -63,7 +74,7 @@
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="codigo">Ingresa tu DNI</label>
-                                        <input required="required" type="number" id="codigo" name="dni" pattern="^[0-9]*" maxlength="8" minlength="8" class="form-control form-control-lg" />
+                                        <input required="required" type="number" id="codigo" name="codigo" pattern="^[0-9]*" maxlength="8" minlength="8" class="form-control form-control-lg" />
 
                                     </div>
 
