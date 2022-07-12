@@ -51,8 +51,17 @@ public class LoginServlet extends HttpServlet {
         System.out.println(dni+contraseña);
 
         Empleado usuario = usuariosDao.validarPass(contraseña,dni);
-        Empleado usuario2=usuariosDao.añadirEmpleado(usuario);
-        System.out.println(usuario2);
+        ArrayList<Empleado> listaEmpleados = usuariosDao.listaEmpleados();
+        Empleado usuario2 =new Empleado();
+       for (Empleado empleado : listaEmpleados){
+           if (empleado.getDni().equals(dni)){
+               usuario2=empleado;
+               break;
+           }else {
+                usuario2 = null;
+           }
+       }
+
 
         if(usuario2 !=null ){
             session.setAttribute("usuario",usuario2);
@@ -62,6 +71,8 @@ public class LoginServlet extends HttpServlet {
            ArrayList <Rol> arrayListRol=usuario.getRoles();
             int rol = arrayListRol.get(1).getIdRol();
             System.out.println(rol);
+            System.out.println(arrayListRol.get(0).getIdRol());
+            System.out.println(arrayListRol.get(1).getIdRol());
 
             //System.out.println(usuario.getRol());
             switch (rol){
