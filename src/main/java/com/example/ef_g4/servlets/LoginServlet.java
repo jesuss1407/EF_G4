@@ -66,13 +66,13 @@ public class LoginServlet extends HttpServlet {
             //System.out.println(usuario.getRol());
             switch (rol){
                 case 1->{
-                    System.out.println("aqui");
+                    response.sendRedirect(request.getContextPath()+"/AdminServlet");
                 }
                 case 2->{
-                    System.out.println("aqui2");
+                    response.sendRedirect(request.getContextPath()+"/CarteleraServlet");
                 }
                 case 3->{
-                    System.out.println("aqui3");
+                    response.sendRedirect(request.getContextPath()+"/CarteleraServlet?action=vendedor");
                 }
             }
 
