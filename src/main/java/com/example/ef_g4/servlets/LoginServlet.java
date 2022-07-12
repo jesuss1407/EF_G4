@@ -1,10 +1,9 @@
 package com.example.ef_g4.servlets;
 
-package com.example.lab11.servlets;
 
 
-import com.example.lab11.beans.BUser;
-import com.example.lab11.daos.UsuariosDao;
+import com.example.ef_g4.Beans.BUser;
+import com.example.ef_g4.daos.UsuariosDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
