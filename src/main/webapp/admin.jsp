@@ -8,7 +8,7 @@
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="java.time.*" %>
 
-<jsp:useBean id="usuario" scope="session" type="com.example.lab11.beans.BUser" class="com.example.lab11.beans.BUser"/>
+<jsp:useBean id="usuario" scope="session" type="com.example.ef_g4.Beans.Empleado" class="com.example.ef_g4.Beans.Empleado"/>
 
 <html>
 <head>
@@ -90,7 +90,7 @@
 
     <jsp:include page="/includes/navbar_admin.jsp">
 
-        <jsp:param name="perfil" value="<%=usuario.getNombres()%>"/>
+        <jsp:param name="perfil" value="<%=usuario.getApellido()%>, <%=usuario.getNombre()%>"/>
     </jsp:include>
 
     <div class="pb-5 pt-4 px-3 titlecolor d-flex justify-content-between align-items-center">
