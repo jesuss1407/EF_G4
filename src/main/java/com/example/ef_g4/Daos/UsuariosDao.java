@@ -1,11 +1,15 @@
 package com.example.ef_g4.Daos;
 
+import com.example.ef_g4.Beans.Cine;
 import com.example.ef_g4.Beans.Empleado;
+import com.example.ef_g4.Beans.Rol;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UsuariosDao extends BaseDao{
 
@@ -22,7 +26,6 @@ public class UsuariosDao extends BaseDao{
             try(ResultSet rs = pstmt.executeQuery()){
                 if(rs.next()){
                     usuario = new Empleado();
-
                 }
             }
 
@@ -31,4 +34,43 @@ public class UsuariosDao extends BaseDao{
         }
         return usuario;
     }
+
+    public Empleado añadirEmpleado(Empleado empleado) {
+        String sql = "select *from empleado e left join rolempleado re on re.idempleado = e.idempleado;";
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            try (ResultSet resultSet = pstmt.executeQuery();) {
+                while (resultSet.next()) {
+                    empleado.setIdEmpleado(resultSet.getInt(1));
+                    empleado.setNombre(resultSet.getString(2));
+                    empleado.setApellido(resultSet.getString(3));
+                    empleado.setDni(resultSet.getString(4));
+                    empleado.setSalario( resultSet.getBigDecimal(5));
+                    empleado.setFechaContrato(resultSet.getString(6));
+                    empleado.setNombreUsuario(resultSet.getString(7));
+                    empleado.setEdad(resultSet.getInt(8));
+                    empleado.setActivo(resultSet.getBoolean(9));
+                    Cine cine = new Cine(resultSet.getInt(10));
+                    empleado.setCine(cine);
+                    Rol rol = new Rol();
+                    Rol rol1 = new Rol();
+                    rol.setIdRol(resultSet.getInt(11));
+                    Empleado empleado1= new Empleado(rol.getIdRol());
+                    rol1.setIdRol(resultSet.getInt(12));
+                    ArrayList<Rol> rolArrayLis = new ArrayList<Rol>();
+                    rolArrayLis.add(rol);
+                    rolArrayLis.add(rol1);
+                    empleado.setJefe(empleado1);
+                    empleado.setRoles(rolArrayLis);
+
+
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Hubo un error en la conexión!");
+            e.printStackTrace();
+        }
+        return empleado;
+    }
+
 }

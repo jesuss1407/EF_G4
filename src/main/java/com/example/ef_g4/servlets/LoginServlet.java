@@ -25,15 +25,11 @@ public class LoginServlet extends HttpServlet {
 
 
         String action = request.getParameter("action") != null ? request.getParameter("action") : "login";
-
         HttpSession session = request.getSession();
-
         switch (action){
             case "login":
-
                 RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
                 view.forward(request, response);
-
                 break;
             case "logout":
                 session.invalidate();
@@ -51,32 +47,32 @@ public class LoginServlet extends HttpServlet {
         UsuariosDao usuariosDao = new UsuariosDao();
 
 
-        String codigo= request.getParameter("codigo");
+        String dni= request.getParameter("dni");
         String contraseña = request.getParameter("password");
-        //System.out.println(codigo+contraseña);
 
-        Empleado usuario = usuariosDao.validarPass(contraseña,codigo);
 
-        if(usuario !=null && !Objects.equals(usuario.getDni(), "")){
-            session.setAttribute("usuario",usuario);
-            //System.out.println(session.getAttribute("usuario")+"xdsesion");
+        Empleado usuario = usuariosDao.validarPass(contraseña,dni);
+        Empleado usuario2=usuariosDao.añadirEmpleado(usuario);
+
+        if(usuario2 !=null ){
+            session.setAttribute("usuario",usuario2);
 
             session.setMaxInactiveInterval(5*60);
-            session.setAttribute("codigo_pucp",codigo);
+            session.setAttribute("dni",usuario2.getDni());
 
-            session.setAttribute("usuarioLogueado", usuario);
+           ArrayList <Rol> arrayListRol=usuario.getRoles();
+            int rol = arrayListRol.get(1).getIdRol();
+            System.out.println(rol);
 
-
-            ArrayList<Rol> rol=usuario.getRoles();
             //System.out.println(usuario.getRol());
             switch (rol){
-                case "admin"->{
+                case 1->{
                     response.sendRedirect(request.getContextPath()+"/AdminServlet");
                 }
-                case "operador"->{
+                case 2->{
                     response.sendRedirect(request.getContextPath()+"/OperadorServlet");
                 }
-                case "cliente"->{
+                case 3->{
                     response.sendRedirect(request.getContextPath()+"/inicio?action=registrado");
                 }
             }

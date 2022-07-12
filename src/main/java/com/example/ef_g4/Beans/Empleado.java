@@ -17,6 +17,13 @@ public class Empleado {
     private Empleado jefe;
     private ArrayList<Rol> roles;
 
+    public Empleado() {
+    }
+
+    public Empleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
     /**
      * @return the idEmpleado
      */

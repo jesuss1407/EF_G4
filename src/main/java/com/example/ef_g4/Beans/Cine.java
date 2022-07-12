@@ -5,6 +5,19 @@ public class Cine {
     private String nombre;
     private Cadena cadena;
 
+    public Cine() {
+    }
+
+    public Cine(int idCine) {
+        this.idCine = idCine;
+    }
+
+    public Cine(int idCine, String nombre, Cadena cadena) {
+        this.idCine = idCine;
+        this.nombre = nombre;
+        this.cadena = cadena;
+    }
+
     /**
      * @return the idCine
      */
