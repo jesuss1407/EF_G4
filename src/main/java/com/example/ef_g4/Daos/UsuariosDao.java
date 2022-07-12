@@ -34,7 +34,9 @@ public class UsuariosDao extends BaseDao{
         return usuario;
     }
 
-    public Empleado añadirEmpleado(Empleado empleado) {
+    public ArrayList<Empleado> listaEmpleados() {
+        ArrayList<Empleado> empleadoslista = new ArrayList<>();
+        Empleado empleado = new Empleado();
         String sql = "select *from empleado e left join rolempleado re on re.idempleado = e.idempleado;";
         try (Connection conn = this.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {
@@ -56,18 +58,21 @@ public class UsuariosDao extends BaseDao{
                     rol.setIdRol(resultSet.getInt(11));
                     Empleado empleado1= new Empleado(rol.getIdRol());
                     rol1.setIdRol(resultSet.getInt(12));
+                    System.out.println(rol1.getIdRol());
                     ArrayList<Rol> rolArrayLis = new ArrayList<Rol>();
                     rolArrayLis.add(rol);
                     rolArrayLis.add(rol1);
                     empleado.setJefe(empleado1);
                     empleado.setRoles(rolArrayLis);
+                    empleadoslista.add(empleado);
+
                 }
             }
         } catch (SQLException e) {
             System.out.println("Hubo un error en la conexión!");
             e.printStackTrace();
         }
-        return empleado;
+        return empleadoslista;
     }
 
 }

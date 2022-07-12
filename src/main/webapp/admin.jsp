@@ -1,12 +1,9 @@
 
 <%@ page import="java.util.ArrayList" %>
 
-<%@ page import="java.util.Objects" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<%@ page import="java.time.LocalDate" %>
-<%@ page import="java.time.*" %>
 
 <jsp:useBean id="usuario" scope="session" type="com.example.ef_g4.Beans.Empleado" class="com.example.ef_g4.Beans.Empleado"/>
 
@@ -15,7 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'/>
 
-    <title>inicio
+    <title>Reportes
     </title>
     <style>
         body {
@@ -97,7 +94,7 @@
         <div class="col-lg-6">
             <br>
             <br>
-            <h1 class='text-light'>Mis viajes</h1>
+            <h1 class='text-light'>Reportes</h1>
 
         </div>
 
@@ -108,26 +105,35 @@
         <table class="table table-dark table-transparent table-hover">
             <thead>
             <tr>
-                <th># IDENTIF.</th>
+                <th>Cantidad de empleados sin jefe</th>
                 <th>FECHA RESERVA</th>
-                <th>FECHA VIAJE</th>
                 <th></th>
-                <th>CIUDAD ORIGEN</th>
-                <th></th>
-                <th>CIUDAD DESTINO</th>
-                <th></th>
-                <th>EMPRESA DE SEGUROS</th>
-                <th># DE BOLETOS</th>
-                <th>COSTO TOTAL</th>
 
-                <th>OPCIONES</th>
+
+            </tr>
+            <tr>
+                <th>Cantidad de películas en 3D</th>
+                <th>FECHA RESERVA</th>
+                <th></th>
+
+
+            </tr>
+            <tr>
+                <th>Cantidad de cines cuyos empleados tengan un salario mayor a 9700</th>
+                <th>FE</th>
+                <th></th>
+
+
+            </tr>
+            <tr>
+                <th>Cadena de cine con la mayor cantidad de películas en cartelera</th>
+                <th></th>
+                <th></th>
 
 
             </tr>
             </thead>
             <tbody>
-
-
 
 
 
