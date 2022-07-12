@@ -15,11 +15,11 @@ public class AdminServlet extends HttpServlet {
 
         Empleado usuario = (Empleado) request.getSession().getAttribute("usuarioLogueado");
 
-        String action = request.getParameter("admin") == null? "sala" : request.getParameter("admin");
+        String action = request.getParameter("admin") == null? "registros" : request.getParameter("admin");
         //System.out.println(usuarioLogueado.getRol());
         //if (Objects.equals(usuarioLogueado.getRol(), "admin")){
             switch(action) {
-                case "sala":
+                case "registros":
                     //ArrayList<BSedeYSala> listaSedes = AdminDao.obtenerSedes();
                     //request.setAttribute("listaSedes",listaSedes);
                     RequestDispatcher rd1 = request.getRequestDispatcher("/admin.jsp");
